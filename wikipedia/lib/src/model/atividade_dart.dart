@@ -28,7 +28,7 @@ class AtividadeDart {
   int contribuicao; //Pode colocar as contribuições, 85 no caso
   int seguidores; //No caso 2 seguidores
   int seguindo; //No caso seguindo 5 perfis
-  int anoRegistrado; //No print está 2026 (ano de entrada)
+  int anoRegistrado; //No print está 2026 e o ano de entrada que está 2025
   String status; //Status da conta
   String? organizacao; //Pode colocar a empresa ou a escola
   String? emojiStatus; //O emoji ali no canto do avatar
