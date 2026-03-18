@@ -1,10 +1,10 @@
-class ArgumentExceptions extends FormatException{
+class ArgumentException extends FormatException{
   final String? command;
 
   final String? argumentName;
 
-  ArgumentExceptions(
-    super.message,[
+  ArgumentException(
+    super.message, [
       this.command,
       this.argumentName,
       super.source,
@@ -13,6 +13,6 @@ class ArgumentExceptions extends FormatException{
   );
   @override
   String toString(){
-    return 'ArgumentExceptions: $message';
+    return 'ArgumentException: $message';
   }
 }
