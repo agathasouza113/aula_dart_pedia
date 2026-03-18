@@ -1,21 +1,25 @@
 import 'dart:io';
+import 'package:command_runner/command_runner.dart';
 import 'package:http/http.dart' as http;
 
 const version = '0.0.1';
 
 //MÉTODO PRINCIPAL
-void main(List<String> arguments){
-  if(arguments.isEmpty || arguments.first == 'help'){
-    printUsage();
-  } else if (arguments.first == 'version'){
-    print('Dartpedia CLI - versão $version');
-  } else if (arguments.first == 'search'){
-    final inputArgs = arguments.length > 1 ? arguments.sublist(1) : null;
-    searchWikipedia(inputArgs);
-  }
-   else {
-    printUsage();
-  }
+void main(List<String> arguments) async{
+  var commandRunner = CommandRunner(
+    onOutput: (String output) async{
+      await write(output);
+    },
+    onError: (Object error){
+      if (error is Error){
+        throw error;
+      }
+      if (error is Exception){
+        print(error);
+      }
+    },
+  )..addCommand(HelpCommand());
+  commandRunner.run(arguments);
 }
 
 void printUsage(){
